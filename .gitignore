@@ -41,6 +41,9 @@ terraform.rc
 
 .terraform.lock.hcl
 
+# Adding .gitignore
+.gitignore
+
 .DS_Store
 **/.DS_Store
 
