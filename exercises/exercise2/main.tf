@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-2"
 }
 
 data "aws_ami" "ubuntu" {
@@ -17,7 +17,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 
   filter {
@@ -34,7 +34,7 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "CloudAcademy"
+    Name = "dev_admin"
     Demo = "Terraform"
   }
 }
@@ -88,7 +88,7 @@ resource "aws_internet_gateway" "main" {
 
   tags = {
     "Name"  = "Main"
-    "Owner" = "CloudAcademy"
+    "Owner" = "dev_admin"
   }
 }
 

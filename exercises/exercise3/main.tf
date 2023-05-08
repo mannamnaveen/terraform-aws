@@ -1,23 +1,9 @@
-terraform {
-  required_version = "~> 1.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.60.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-west-2"
-}
-
 data "aws_ami" "ubuntu" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 
   filter {
@@ -34,7 +20,7 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "CloudAcademy"
+    Name = "dev-admin"
     Demo = "Terraform"
   }
 }
@@ -76,7 +62,7 @@ resource "aws_internet_gateway" "main" {
 
   tags = {
     "Name"  = "Main"
-    "Owner" = "CloudAcademy"
+    "Owner" = "dev-admin"
   }
 }
 
